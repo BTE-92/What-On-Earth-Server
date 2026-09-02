@@ -86,7 +86,5 @@ and can be ignored. As long as you keep all of these next to the script and
 reuse it, everything you saved will still be there next time. Just don't delete
 them.
 
-HAVE FUN !
-
 Have fun !
 

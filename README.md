@@ -11,22 +11,18 @@ https://archive.org/details/traplight-whatonearth
 ## REQUIREMENTS
 
 
-
 * A jailbroken 32-bit Apple device with a file manager installed (iFile or Filza)
 * A PC with Python installed
 * Both devices connected to the same Wi-Fi network
 
 
-
 ## SETUP
-
 
 
 1. Download the server script and run it on your PC.
 
    IMPORTANT: it must be run as Administrator (Windows) or with sudo
 (macOS/Linux). The script needs port 80.
-
 
 
 1. Once running, the script prints your PC's local IP address (looks
@@ -85,6 +81,3 @@ appear alongside it — these are normal SQLite working files, not extra data,
 and can be ignored. As long as you keep all of these next to the script and
 reuse it, everything you saved will still be there next time. Just don't delete
 them.
-
-Have fun !
-

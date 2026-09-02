@@ -59,7 +59,10 @@ console window as you play.
 probably blocking the connection. Try temporarily disabling it to
 confirm.
 
-
+* Port 80 already in use / IIS: on Windows, IIS (a built-in web server)
+also uses port 80 by default and can conflict with the script. Disable
+it via Win+R > type "optionalfeatures" > uncheck "Internet Information
+Services".
 
 * Editing /etc/hosts doesn't seem to work even after a full restart:
 the script also runs a small DNS server as a backup. Instead of

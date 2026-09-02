@@ -78,12 +78,15 @@ whenever the script isn't running.
 
 
 
-Levels you save or publish in-game are stored on your PC, in a
-"whatonearth\_saves" folder created next to the script. As long as you
-keep that folder and reuse the same script, your saved levels will
-still be there next time. Just don't delete it.
+Everything you save in-game (levels, highscores, likes, comments, screenshots)
+is stored on your PC in a single database file, "whatonearth.db", created next
+to the script. You may also see "whatonearth.db-wal" and "whatonearth.db-shm"
+appear alongside it — these are normal SQLite working files, not extra data,
+and can be ignored. As long as you keep all of these next to the script and
+reuse it, everything you saved will still be there next time. Just don't delete
+them.
 
-
+## HAVE FUN !
 
 Have fun !
 

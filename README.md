@@ -1,6 +1,18 @@
 This branch is a modification of the WhatOnEarth server so it can run locally on IOS device via terminal
 
 
+## Game Screenshots:
+
+<table>
+  <tr>
+    <td><img src="screenshot1.png" width="400" alt="Screenshot 1"></td>
+    <td><img src="screenshot2.png" width="400" alt="Screenshot 2"></td>
+    <td><img src="screenshot3.png" width="400" alt="Screenshot 3"></td>
+    <td><img src="screenshot4.png" width="400" alt="Screenshot 4"></td>
+  </tr>
+</table>
+
+
 ## REQUIREMENTS
 
 * The What On Earth game [Click this to download it (32 bit)](https://archive.org/download/traplight-whatonearth/WhatOnEarth_%28com.traplight.whatonearth%29_0.4.0.ipa)

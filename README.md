@@ -81,3 +81,7 @@ appear alongside it, these are normal SQLite working files, not extra data,
 and can be ignored. As long as you keep all of these next to the script and
 reuse it, everything you saved will still be there next time. Just don't delete
 them.
+
+## CONTACT
+
+Contact me @baptistewi92 on Discord

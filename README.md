@@ -1,87 +1,62 @@
-This lets you play the "What On Earth" beta (an early build of Big Bang
-Racing, by Traplight) offline.
+This branch is a modification of the WhatOnEarth server so it can run locally on IOS devices via terminal
 
-
-
-How it works: this runs a small fake server on your PC that pretends to
-be the game's original server, and redirects the game's requests to it.
-
-https://archive.org/details/traplight-whatonearth
 
 ## REQUIREMENTS
 
+* The What On Earth game [Click this to download it (32 bit)](https://archive.org/download/traplight-whatonearth/WhatOnEarth_%28com.traplight.whatonearth%29_0.4.0.ipa)
+* A jailbroken 32-bit Apple device with the following packages downloaded from cydia:
 
-* A jailbroken 32-bit Apple device with a file manager installed (iFile or Filza)
-* A PC with Python installed
-* Both devices connected to the same Wi-Fi network
-
+- Python (From Cydia/Telesphoreo repo)
+- MobileTerminal/MTerminal/NewTerm2 (Get whichever one according to your IOS version: IOS 5 = MobileTerminal, IOS 8 = MTerminal, IOS 10 = NewTerm 2 or MTerminal)
+- IFile/Filza (whichever one works)
+- Some reading skills
 
 ## SETUP
 
+1. Download the game and sideload it to your 32 bit IOS device (sideload it however you want)
 
-1. Download the server script and run it on your PC.
+2. Download the `woe_localhost.py` script from this repo and move it to `var/mobile` directory on the IOS device.
 
-   IMPORTANT: it must be run as Administrator (Windows) or with sudo
-(macOS/Linux). The script needs port 80.
-
-
-1. Once running, the script prints your PC's local IP address (looks
-like 192.168.1.xxx). Keep this window open the whole time you play.
-2. On your Apple device, open your file manager (iFile/Filza), go to the
+3. On your Apple device, open your file manager (iFile/Filza), go to the
 root of the filesystem, then into the `etc` folder, and open the
 `hosts` file with the text editor.
-3. Tap Edit, and add a new line at the very end (just the IP of your PC and the
-hostname. This should look like this :
+
+4. Tap Edit, add a new line and write the following:
+
+   127.0.0.1 PlayDevLB-1049210432.us-west-2.elb.amazonaws.com
 
 
+5. Save, then fully restart your Apple device.
+   
+6. Now open your terminal app on your IOS device (NewTerm2/MonileTerminal/MTerminal), and type su.
+   
+7. The terminal will ask you for a password. So enter the root password (usually alpine). If one right you should have root shell now.
 
-   YOUR\_PC\_IP PlayDevLB-1049210432.us-west-2.elb.amazonaws.com
+8. Run the following command to start the server
 
+   nohup python woe_localhost.py > /tmp/server.log 2>&1 &
 
+9. If you did everything right you should see something in terminal like [somenumber] anothernumber (e.g. [1] 1767)
 
-1. Save, then fully restart your Apple device.
-2. Make sure your PC and Apple device are still on the same Wi-Fi
-network, and that the script is still running on the PC.
-3. Launch the game. You should see requests show up in the script's
-console window as you play.
-
-
+10. Now open WhatOnEarth and you should be able to bypass the connecting screen
 
 ## TROUBLESHOOTING
 
+* Stuck on "connecting to server" forever: Double check the `hosts` file in `/etc`.
 
-
-* Stuck on "connecting to server" forever: your PC's firewall is
-probably blocking the connection. Try temporarily disabling it to
-confirm.
-
-* Port 80 already in use / IIS: on Windows, IIS (a built-in web server)
-also uses port 80 by default and can conflict with the script. Disable
-it via Win+R > type "optionalfeatures" > uncheck "Internet Information
-Services".
-
-* Editing /etc/hosts doesn't seem to work even after a full restart:
-the script also runs a small DNS server as a backup. Instead of
-relying on the hosts file, go to Wi-Fi settings on your device > (i)
-next to your network > DNS > switch to Manual > set your PC's IP as
-the only DNS server. Remember to switch it back to Automatic when
-you're done playing, or your device will lose internet access
-whenever the script isn't running.
-
-
+* Port 80 already in use: ensure you are on root shell. you should see a # on the input space of terminal.
 
 ## SAVING YOUR LEVELS
 
-
-
 Everything you save in-game (levels, highscores, likes, comments, screenshots)
-is stored on your PC in a single database file, "whatonearth.db", created next
-to the script. You may also see "whatonearth.db-wal" and "whatonearth.db-shm"
-appear alongside it, these are normal SQLite working files, not extra data,
-and can be ignored. As long as you keep all of these next to the script and
-reuse it, everything you saved will still be there next time. Just don't delete
-them.
+is stored on your device in a single database file, "whatonearth.db", created next
+to the script (so its located in `var/mobile`). You may also see "whatonearth.db-wal" 
+and "whatonearth.db-shm" appear alongside it, these are normal SQLite working 
+files, not extra data, and can be ignored. As long as you keep all of these 
+next to the script and reuse it, everything you saved will still be there next time.
+Just don't delete them.
 
 ## CONTACT
 
 Contact me @baptistewi92 on Discord
+

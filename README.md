@@ -1,10 +1,20 @@
 This lets you play the "What On Earth" beta (an early build of Big Bang
 Racing, by Traplight) offline.
 
-
-
 How it works: this runs a small fake server on your PC that pretends to
 be the game's original server, and redirects the game's requests to it.
+
+
+## Game Screenshots:
+
+<table>
+  <tr>
+    <td><img src="Screenshots/Screenshot 1.png" width="600" alt="Screenshot 1"></td>
+    <td><img src="Screenshots/Screenshot 2.png" width="600" alt="Screenshot 2"></td>
+    <td><img src="Screenshots/Screenshot 3.png" width="600" alt="Screenshot 3"></td>
+    <td><img src="Screenshots/Screenshot 4.png" width="600" alt="Screenshot 4"></td>
+  </tr>
+</table>
 
 
 ## REQUIREMENTS

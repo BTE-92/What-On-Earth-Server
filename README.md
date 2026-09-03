@@ -5,10 +5,10 @@ This branch is a modification of the WhatOnEarth server so it can run locally on
 
 <table>
   <tr>
-    <td><img src="Screenshots/Screenshot1.png" width="400" alt="Screenshot 1"></td>
-    <td><img src="Screenshots/Screenshot2.png" width="400" alt="Screenshot 2"></td>
-    <td><img src="Screenshots/Screenshot3.png" width="400" alt="Screenshot 3"></td>
-    <td><img src="Screenshots/Screenshot4.png" width="400" alt="Screenshot 4"></td>
+    <td><img src="Screenshots/Screenshot 1.png" width="400" alt="Screenshot 1"></td>
+    <td><img src="Screenshots/Screenshot 2.png" width="400" alt="Screenshot 2"></td>
+    <td><img src="Screenshots/Screenshot 3.png" width="400" alt="Screenshot 3"></td>
+    <td><img src="Screenshots/Screenshot 4.png" width="400" alt="Screenshot 4"></td>
   </tr>
 </table>
 

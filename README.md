@@ -10,7 +10,7 @@ https://archive.org/details/traplight-whatonearth
 
 ## REQUIREMENTS
 
-
+* The What On Earth game [Click this to download it (32 bit)](https://archive.org/details/traplight-whatonearth)
 * A jailbroken 32-bit Apple device with a file manager installed (iFile or Filza)
 * A PC with Python installed
 * Both devices connected to the same Wi-Fi network

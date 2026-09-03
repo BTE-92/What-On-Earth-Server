@@ -1,4 +1,4 @@
-This branch is a modification of the WhatOnEarth server so it can run locally on IOS devices via terminal
+This branch is a modification of the WhatOnEarth server so it can run locally on IOS device via terminal
 
 
 ## REQUIREMENTS
@@ -38,11 +38,12 @@ root of the filesystem, then into the `etc` folder, and open the
 
 9. If you did everything right you should see something in terminal like [somenumber] anothernumber (e.g. [1] 1767)
 
-10. Now open WhatOnEarth and you should be able to bypass the connecting screen
+10. Now open WhatOnEarth and you should be able to bypass the connecting screen and play normally.
 
 ## TROUBLESHOOTING
 
-* Stuck on "connecting to server" forever: Double check the `hosts` file in `/etc`.
+* Stuck on "connecting to server" forever: Double check the `hosts` file in `/etc`. If you restarted your device or killed
+  the python process, you will have to rerun the script so follow the setup from step 6.
 
 * Port 80 already in use: ensure you are on root shell. you should see a # on the input space of terminal.
 

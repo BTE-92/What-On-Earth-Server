@@ -40,7 +40,7 @@ root of the filesystem, then into the `etc` folder, and open the
 
 5. Save, then fully restart your Apple device.
    
-6. Now open your terminal app on your IOS device (NewTerm2/MonileTerminal/MTerminal), and type su.
+6. Now open your terminal app on your IOS device (NewTerm2/MobileTerminal/MTerminal), and type su.
    
 7. The terminal will ask you for a password. So enter the root password (usually alpine). If one right you should have root shell now.
 

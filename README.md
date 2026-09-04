@@ -27,6 +27,7 @@ be the game's original server, and redirects the game's requests to it.
 
 ## SETUP
 
+1. Download the game and sideload it to your 32 bit IOS device (sideload it however you want)
 
 1. Download the server script and run it on your PC.
 

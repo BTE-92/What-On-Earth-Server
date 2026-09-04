@@ -1,7 +1,7 @@
 This branch is a modification of the WhatOnEarth server so it can run locally on IOS device via terminal
 
 
-## Game Screenshots:
+## Game Screenshots
 
 <table>
   <tr>

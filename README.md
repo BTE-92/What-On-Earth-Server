@@ -5,7 +5,7 @@ How it works: this runs a small fake server on your PC that pretends to
 be the game's original server, and redirects the game's requests to it.
 
 
-## Game Screenshots:
+## Game Screenshots
 
 <table>
   <tr>

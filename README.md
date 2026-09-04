@@ -40,7 +40,7 @@ like 192.168.1.xxx). Keep this window open the whole time you play.
 root of the filesystem, then into the `etc` folder, and open the
 `hosts` file with the text editor.
 3. Tap Edit, and add a new line at the very end (just the IP of your PC and the
-hostname. This should look like this :
+hostname). This should look like this :
 
 
 

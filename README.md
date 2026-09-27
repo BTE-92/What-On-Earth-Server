@@ -153,7 +153,7 @@ Once the file has been created, close the game.
 
 ### 2. Start the Server
 
-Run the server script on your PC.
+Download and run the server script on your PC.
 
 **Important:** The server requires **ports 80 and 53**, so it must be run with administrator privileges.
 

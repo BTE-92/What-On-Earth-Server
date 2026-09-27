@@ -1,4 +1,4 @@
-# What On Earth Offline Server
+# What On Earth Server
 
 This lets you play the **"What On Earth" beta**, an early build of **Big Bang Racing by Traplight**.
 

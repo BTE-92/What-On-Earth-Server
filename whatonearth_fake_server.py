@@ -67,6 +67,7 @@ from urllib.parse import urlparse, parse_qs
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 
 HTTP_PORT = 80
+FALLBACK_HTTP_PORT = 4122
 DNS_PORT = 53
 TARGET_HOST = "playdevlb-1049210432.us-west-2.elb.amazonaws.com"
 UPSTREAM_DNS = ("8.8.8.8", 53)
@@ -661,14 +662,38 @@ class FakeApiHandler(BaseHTTPRequestHandler):
 
 
 def run_http_server():
-    try:
-        server = ThreadingHTTPServer(("0.0.0.0", HTTP_PORT), FakeApiHandler)
-        server.serve_forever()
-    except PermissionError:
-        print(f"\n[HTTP] Error: can't open port {HTTP_PORT}. Run as administrator.")
-    except OSError as e:
-        print(f"\n[HTTP] Error: can't open port {HTTP_PORT} ({e}).")
-        print("[HTTP] Is another copy of this script already running? Close it first.")
+    server = None
+    # Port 0 = last resort: the OS picks any free port for us
+    for port in (HTTP_PORT, FALLBACK_HTTP_PORT, 0):
+        try:
+            server = ThreadingHTTPServer(("0.0.0.0", port), FakeApiHandler)
+            break
+        except PermissionError:
+            print(f"\n[HTTP] WARNING: can't open port {port} (permission denied). Run as administrator/root.")
+        except OSError as e:
+            print(f"\n[HTTP] WARNING: can't open port {port} ({e}).")
+            print("[HTTP] Is another copy of this script already running? Close it first.")
+
+        if port == HTTP_PORT:
+            print(f"[HTTP] Falling back to port {FALLBACK_HTTP_PORT}...")
+        elif port == FALLBACK_HTTP_PORT:
+            print("[HTTP] Falling back to a RANDOM free port chosen by the OS...")
+
+    if server is None:
+        print("\n[HTTP] ERROR: could not open ANY HTTP port. The server cannot run.")
+        return
+
+    used_port = server.server_address[1]
+    if used_port != HTTP_PORT:
+        print("\n" + "!" * 70)
+        print(f"[HTTP] WARNING: listening on fallback port {used_port} instead of {HTTP_PORT}.")
+        print("[HTTP] The game connects to port 80 with no way to change that, so it")
+        print(f"[HTTP] will NOT reach this server unless port 80 is forwarded to {used_port}")
+        print("[HTTP] (iptables on a rooted device, router/proxy forwarding, etc.).")
+        print("!" * 70 + "\n")
+    else:
+        print(f"[HTTP] Listening on port {used_port}")
+    server.serve_forever()
 
 
 # ---------------------------------------------------------------------
@@ -738,12 +763,20 @@ def run_dns_server(fake_ip):
         sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         sock.bind(("0.0.0.0", DNS_PORT))
     except PermissionError:
-        print(f"\n[DNS] Error: can't open port {DNS_PORT}. Run as administrator.")
+        print("\n" + "!" * 70)
+        print(f"[DNS] WARNING: can't open port {DNS_PORT} (permission denied).")
+        print("[DNS] DNS server DISABLED. The iPad's DNS spoofing will NOT work.")
+        print("[DNS] Use a hosts-file redirect or run as administrator/root instead.")
+        print("!" * 70 + "\n")
         return
     except OSError as e:
-        print(f"\n[DNS] Error: can't open port {DNS_PORT} ({e}).")
+        print("\n" + "!" * 70)
+        print(f"[DNS] WARNING: can't open port {DNS_PORT} ({e}).")
+        print("[DNS] DNS server DISABLED. The iPad's DNS spoofing will NOT work.")
         print("[DNS] Is another copy of this script already running? Close it first.")
+        print("!" * 70 + "\n")
         return
+    print(f"[DNS] Listening on port {DNS_PORT}")
     while True:
         data, addr = sock.recvfrom(512)
         threading.Thread(target=handle_dns_query, args=(sock, data, addr, fake_ip), daemon=True).start()
